@@ -17,6 +17,11 @@ include grafana::nginx
 ### Configure Grafana
 
 ```puppet
+
+  Grafana_config {
+    notify  => Service['grafana-server'],
+  }
+
  grafana_config {
     'server/domain':              value   => $::fqdn;
     'server/root_url':            value   => "https://${::fqdn}/";
